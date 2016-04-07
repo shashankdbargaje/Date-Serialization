@@ -1,0 +1,5 @@
+  // the spring annontations will point to the correct class
+  
+  @JsonSerialize(using = CustomDateSerializer.class)
+  @JsonDeserialize(using = CustomDateDeserializer.class)
+  private Date startDt;
