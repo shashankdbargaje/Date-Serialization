@@ -1,0 +1,13 @@
+public class CustomDateSerializer extends JsonSerializer<Date> {
+  private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+// Overrides the serializer in JsonSerializer
+// handle the date in the format and Time Zone you want to
+  @Override
+  public void serialize(Date value, JsonGenerator gen, SerializerProvider arg2) throws IOException,
+      JsonProcessingException {
+    TimeZone gmtTime = TimeZone.getTimeZone("GMT");
+    formatter.setTimeZone(gmtTime);
+    gen.writeString(formatter.format(value));
+  }
+}
