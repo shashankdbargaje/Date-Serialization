@@ -1,0 +1,20 @@
+public class CustomDateDeserializer extends JsonDeserializer<Date> {
+
+// Derserialize the date you receive from UI
+  @Override
+  public Date deserialize(JsonParser jsonparser, DeserializationContext deserializationcontext)
+      throws IOException, JsonProcessingException {
+
+    Date d = null;
+
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    String date = jsonparser.getText();
+    try {
+      if (date != "")
+        d = format.parse(date);
+    } catch (java.text.ParseException e) {
+      e.printStackTrace();
+    }
+    return d;
+  }
+}
